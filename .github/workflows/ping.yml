@@ -1,0 +1,15 @@
+name: Ping Render Keep-Alive
+
+on:
+  schedule:
+    # Berjalan tiap 10 menit
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit Render URL
+        run: |
+          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" -s -o /dev/null -w "%{http_code}\n" https://forward-absensi-kelas.onrender.com/
